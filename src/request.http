@@ -1,0 +1,84 @@
+
+@baseUrl = http://localhost:3333
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImVtYWlsIjoiam9obkB0ZXN0LmNvbSIsImlhdCI6MTczNjczMzU5OSwiZXhwIjoxNzM2NzM0NDk5fQ.I-Xnd6LESH94b6Azre_SP_Ef8FDlTYTZ30MhGa3ZvNM
+
+
+### Signup with Existing Email
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+    "email": "john@test.com",
+    "password": "password123"
+}
+
+### Login Endpoint (optional)
+POST {{baseUrl}}/auth/signin
+Content-Type: application/json
+
+{
+    "email": "john@test.com",
+    "password": "password123"
+}
+
+### Get Profile (after login)
+GET {{baseUrl}}/users/me
+Authorization: Bearer {{token}}
+
+### Customer with Special Characters
+POST  {{baseUrl}}/customers
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "John-Michael",
+    "surname": "O'Connor",
+    "email": "john.michael@example.com",
+    "age": 35,
+    "address": "123 Main St, New York, NY 10001"
+}
+
+### Create Order for Customer
+### click multiple time to create many orders with status created
+POST {{baseUrl}}/customers/1/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "created",
+    "products": [
+        {
+            "name": "Product Name",
+            "price": 144.99,
+            "description": "Product Description",
+            "barcode": "1234567890"
+        },
+        {
+            "name": "Product Name 2",
+            "price": 33.1,
+            "description": "Product Description 2",
+            "barcode": "12345678920"
+        },
+        {
+            "name": "Product Name 3",
+            "price": 44,
+            "description": "Product Description ",
+            "barcode": "12345678920"
+        }
+    ]
+}
+
+
+### send invoice for Customer
+POST {{baseUrl}}/customers/1/orders/1/send-invoice
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### send invoices for Customer with order status not invoiced
+### trigger queue in bulk for multiple orders
+POST {{baseUrl}}/customers/send-invoices
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+

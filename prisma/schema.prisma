@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  email String @unique
+  hash  String
+
+  firstName String?
+  lastName  String?
+
+  @@map("users")
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  surname   String
+  email     String   @unique
+  age       Int?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+
+  @@map("customers")
+}
+
+model Order {
+  id         Int      @id @default(autoincrement())
+  customerId Int
+  customer   Customer @relation(fields: [customerId], references: [id])
+  status     OrderStatus
+  products   Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  activityLogs ActivityLog[] 
+
+  @@map("orders")
+}
+
+enum OrderStatus {
+  created
+  in_progress
+  delivered
+  invoiced
+}
+
+
+// prisma/schema.prisma
+model ActivityLog {
+  id            Int             @id @default(autoincrement())
+  orderId       Int             
+  
+  status        ActivityStatus
+  stage         ActivityStage
+  
+  initiatedBy   String?         
+  errorMessage  String?     
+  
+  startedAt     DateTime        @default(now())
+  completedAt   DateTime?
+  
+  attempts      Int             @default(1)
+  processorId   String?     
+  
+  filePath      String?
+  fileSize      BigInt?
+  
+  metadata      Json?       
+  
+  order         Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("activity_logs")
+  @@index([orderId])
+  @@index([status])
+  @@index([stage])
+}
+
+enum ActivityStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
+
+enum ActivityStage {
+  QUEUE_INITIATED
+  PDF_GENERATION
+  FILE_STORING
+  NOTIFICATION
+  EMAIL_INITIATED
+  EMAIL_SENT
+  COMPLETED
+}
