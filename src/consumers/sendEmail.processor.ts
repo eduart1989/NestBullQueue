@@ -9,15 +9,14 @@ import { Job } from 'bull';
 import {
   PROCESS_CONCURRENCY,
   SEND_EMAIL,
-} from 'src/constants';
+} from '../../src/constants';
 import { ActivityLogService } from './services/ActivityLog.service';
 import {
   ActivityStage,
   ActivityStatus,
   OrderStatus,
 } from '@prisma/client';
-import { CustomerService } from 'src/customer/customer.service';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../../src/prisma/prisma.service';
 
 export interface EmailJobData {
   invoicePath: string;

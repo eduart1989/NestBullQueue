@@ -6,7 +6,7 @@ import {
 } from '@prisma/client';
 import * as fs from 'fs';
 import { OrderData } from '../generatePdf.processor';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../../../src/prisma/prisma.service';
 
 @Injectable()
 export class ActivityLogService {

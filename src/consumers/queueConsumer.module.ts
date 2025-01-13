@@ -11,7 +11,7 @@ import {
   BULL_CONFIG_SETTINGS,
   SEND_EMAIL,
   SEND_EMAIL_QUEUE_OPTIONS,
-} from 'src/constants';
+} from '../../src/constants';
 import { SendEmailProcessor } from './sendEmail.processor';
 
 @Module({

@@ -1,7 +1,6 @@
 
 @baseUrl = http://localhost:3333
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImVtYWlsIjoiam9obkB0ZXN0LmNvbSIsImlhdCI6MTczNjczMzU5OSwiZXhwIjoxNzM2NzM0NDk5fQ.I-Xnd6LESH94b6Azre_SP_Ef8FDlTYTZ30MhGa3ZvNM
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiam9obkB0ZXN0LmNvbSIsImlhdCI6MTczNjczNzE5MiwiZXhwIjoxNzM2NzM4MDkyfQ.By8llZ0J__bbO50Typ4dHULmKiOpKDbYdaSokCPrtNg
 
 ### Signup with Existing Email
 POST {{baseUrl}}/auth/signup

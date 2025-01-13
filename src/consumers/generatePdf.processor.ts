@@ -11,21 +11,21 @@ import {
   GENERATE_PDF,
   PROCESS_CONCURRENCY,
   SEND_EMAIL,
-} from 'src/constants';
+} from '../../src/constants';
 import {
   Order,
   Customer,
   ActivityStage,
   ActivityStatus,
 } from '@prisma/client';
-import { ActivityLogService } from 'src/consumers/services/ActivityLog.service';
-import { PdfGenerationService } from 'src/consumers/services/PdfGeneration.service';
-import { InvoiceTransformerService } from 'src/consumers/services/InvoiceTransform.service';
+import { ActivityLogService } from '../../src/consumers/services/ActivityLog.service';
+import { PdfGenerationService } from '../../src/consumers/services/PdfGeneration.service';
+import { InvoiceTransformerService } from '../../src/consumers/services/InvoiceTransform.service';
 import {
   FileManagementService,
   INVOICE_CONSTANTS,
-} from 'src/consumers/services/File.service';
-import { DelayService } from 'src/consumers/services/Delay.service';
+} from '../../src/consumers/services/File.service';
+import { DelayService } from '../../src/consumers/services/Delay.service';
 
 export interface OrderData {
   order: Omit<Order, 'products'> & {
