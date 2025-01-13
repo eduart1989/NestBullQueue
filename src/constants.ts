@@ -20,15 +20,6 @@ export const GENERATE_PDF_QUEUE_OPTIONS = {
   },
 };
 
-export const SEND_EMAIL_QUEUE_OPTIONS = {
-  attempts: 3,
-  removeOnComplete: true,
-  backoff: {
-    type: 'exponential',
-    delay: 6000,
-  },
-};
-
 export const BULL_CONFIG_SETTINGS = {
   lockDuration: 30000, // 30 seconds lock per job
   maxStalledCount: 3,

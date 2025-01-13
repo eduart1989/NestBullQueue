@@ -10,8 +10,8 @@ import { BullModule } from '@nestjs/bull';
 import {
   BULL_CONFIG_SETTINGS,
   SEND_EMAIL,
-  SEND_EMAIL_QUEUE_OPTIONS,
-} from '../../src/constants';
+  DEFAULT_QUEUE_OPTIONS,
+} from 'src/constants';
 import { SendEmailProcessor } from './sendEmail.processor';
 
 @Module({
@@ -19,7 +19,7 @@ import { SendEmailProcessor } from './sendEmail.processor';
     // Register the send email queue
     BullModule.registerQueue({
       name: SEND_EMAIL,
-      defaultJobOptions: SEND_EMAIL_QUEUE_OPTIONS,
+      defaultJobOptions: DEFAULT_QUEUE_OPTIONS,
       settings: BULL_CONFIG_SETTINGS,
     }),
   ],

@@ -15,7 +15,7 @@ import {
 } from '@prisma/client';
 import { Queue } from 'bull';
 import { InjectQueue } from '@nestjs/bull';
-import { GENERATE_PDF } from '../../src/constants';
+import { GENERATE_PDF } from 'src/constants';
 
 @Injectable()
 export class CustomerService {

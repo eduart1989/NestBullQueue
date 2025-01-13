@@ -8,8 +8,8 @@ import {
   GENERATE_PDF,
   DEFAULT_QUEUE_OPTIONS,
   BULL_CONFIG_SETTINGS,
-} from '../../src/constants';
-import { QueueConsumerModule } from '../../src/consumers/queueConsumer.module';
+} from 'src/constants';
+import { QueueConsumerModule } from 'src/consumers/queueConsumer.module';
 
 @Module({
   imports: [
