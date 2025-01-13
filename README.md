@@ -61,9 +61,9 @@ yarn pretest:e2e
 yarn test:e2e
 ```
 
-# NestifyMe API
+# NestBull API
 
-Welcome to the NestifyMe API. Below, you'll find a list of the available endpoint URLs for this API.
+Welcome to the NestBullQueue API. Below, you'll find a list of the available endpoint URLs for this API.
 
 ## Endpoints
 
@@ -91,3 +91,5 @@ Welcome to the NestifyMe API. Below, you'll find a list of the available endpoin
 
 - **POST /customers/:customerId/orders/:orderId/send-invoice** - Send invoice for a specific order
 - **POST /customers/send-invoices** - Send invoices for all uninvoiced orders
+
+To seed some data please check request.http file
